@@ -20,9 +20,15 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["J"] = { "5j" },
+    ["K"] = { "5k" },
+    ["H"] = { "5h" },
+    ["L"] = { "5l" },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
+  i = {
+  }
 }
