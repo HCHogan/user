@@ -1,4 +1,4 @@
--- TODO Test
+-- TODO: Test
 
 return {
   -- You can also add new plugins here as well:
@@ -21,4 +21,40 @@ return {
       { "<leader>T", "<cmd>TodoTelescope<cr>", desc = "Open TODOs in Telescope" },
     },
   },
+  {
+    "goolord/alpha-nvim",
+    opts = function(_, opts) -- override the options using lazy.nvim
+      opts.section.header.val = {
+        "    ██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗     ",
+        "    ██║  ██║██╔══██╗████╗  ██║██║ ██╔╝     ",
+        "    ███████║███████║██╔██╗ ██║█████╔╝      ",
+        "    ██╔══██║██╔══██║██║╚██╗██║██╔═██╗      ",
+        "    ██║  ██║██║  ██║██║ ╚████║██║  ██╗     ",
+        "    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝     ",
+        "                                           ",
+        "██╗  ██╗ ██████╗  ██████╗  █████╗ ███╗   ██",
+        "██║  ██║██╔═══██╗██╔════╝ ██╔══██╗████╗  ██",
+        "███████║██║   ██║██║  ███╗███████║██╔██╗ ██",
+        "██╔══██║██║   ██║██║   ██║██╔══██║██║╚██╗██",
+        "██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║ ╚████",
+        "╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══",
+      }
+    end
+  },
+  {
+    "xbase-lab/xbase",
+    config = function()
+      require("xbase").setup {
+        -- your xbase config here
+      }
+    end,
+  },
+  {
+    "gcmt/wildfire.vim",
+    lazy = false
+  },
+  {
+    "tpope/vim-surround",
+    lazy = false
+  }
 }

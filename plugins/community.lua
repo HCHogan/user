@@ -8,5 +8,7 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.typescript" },
-  -- { import = "astrocommunity.completion.copilot-lua-cmp" },
+  { import = "astrocommunity.code-runner.sniprun" },
+  -- { import = "astrocommunity.code-runner.overseer-nvim"},
+  { import = "astrocommunity.completion.copilot-lua-cmp" },
 }
