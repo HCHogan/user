@@ -22,10 +22,8 @@ int main() {
     cout << "nmsl\n";
   } else {
     cout << "hehe\n";
+    cout << "nmsl\n";
   }
-switch (1) {
-  hehe:
-  return 0;
 }
 
 int fs() {
