@@ -58,6 +58,36 @@ return {
     lazy = false
   },
   {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    config = function()
+      require("catppuccin").setup{
+        integrations = {
+          flash = true,
+          neotree = true,
+          treesitter = true,
+          notify = true,
+          mason = true,
+          which_key = true,
+          telescope = {
+            enabled = true,
+            style = "nvchad",
+          }
+        }
+      }
+    end,
+  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   config = function()
+  --     require("lualine").setup {
+  --       options = {
+  --         theme = "catppuccino",
+  --       }
+  --     }
+  --   end,
+  -- },
+  {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
@@ -73,7 +103,7 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function()
       require('copilot').setup({
         panel = {
