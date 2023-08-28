@@ -39,7 +39,7 @@ return {
         "██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║ ╚████║",
         "╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝",
       }
-    end
+    end,
   },
   {
     "xbase-lab/xbase",
@@ -51,17 +51,38 @@ return {
   },
   {
     "gcmt/wildfire.vim",
-    lazy = false
+    event = "VeryLazy",
   },
   {
     "tpope/vim-surround",
-    lazy = false
+    event = "VeryLazy",
+  },
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true, -- or `opts = {}`
+  },
+  {
+    "romgrk/barbar.nvim",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",     -- OPTIONAL: for git status
+      "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      animation = true,
+      insert_at_start = true,
+      -- …etc.
+    },
+    version = "^1.0.0", -- optional: only update when a new 1.x version is released
+    event = "VeryLazy",
   },
   {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
-      require("catppuccin").setup{
+      require("catppuccin").setup {
         integrations = {
           flash = true,
           neotree = true,
@@ -72,11 +93,38 @@ return {
           telescope = {
             enabled = true,
             style = "nvchad",
-          }
-        }
+          },
+          dropbar = {
+            enabled = true,
+            color_mode = true,
+          },
+          indent_blankline = {
+            enabled = true,
+            colored_indent_levels = true,
+          },
+          barbar = true,
+          aerial = true,
+          headlines = true,
+        },
       }
     end,
   },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   config = function()
+  --     require("indent_blankline").setup {
+  --       space_char_blankline = " ",
+  --       char_highlight_list = {
+  --         "IndentBlanklineIndent1",
+  --         "IndentBlanklineIndent2",
+  --         "IndentBlanklineIndent3",
+  --         "IndentBlanklineIndent4",
+  --         "IndentBlanklineIndent5",
+  --         "IndentBlanklineIndent6",
+  --       }
+  --     }
+  --   end,
+  -- },
   -- {
   --   "nvim-lualine/lualine.nvim",
   --   config = function()
@@ -94,35 +142,47 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
       { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "r", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+      {
+        "R",
+        mode = { "o", "x" },
+        function() require("flash").treesitter_search() end,
+        desc =
+        "Treesitter Search"
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function() require("flash").toggle() end,
+        desc =
+        "Toggle Flash Search"
+      },
     },
   },
   {
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
     config = function()
-      require('copilot').setup({
+      require("copilot").setup {
         panel = {
-          enabled = true,  -- TODO: copilot-cmp
+          enabled = true, -- TODO: copilot-cmp
           auto_refresh = false,
           keymap = {
             jump_prev = "[[",
             jump_next = "]]",
             accept = "<CR>",
             refresh = "gr",
-            open = "<M-CR>"
+            open = "<M-CR>",
           },
           layout = {
             position = "bottom", -- | top | left | right
-            ratio = 0.4
+            ratio = 0.4,
           },
         },
         suggestion = {
-          enabled = true,  -- TODO: copilot-cmp
+          enabled = true, -- TODO: copilot-cmp
           auto_trigger = true,
           debounce = 75,
           keymap = {
@@ -145,10 +205,10 @@ return {
           cvs = false,
           ["."] = false,
         },
-        copilot_node_command = 'node', -- Node.js version must be > 16.x
+        copilot_node_command = "node", -- Node.js version must be > 16.x
         server_opts_overrides = {},
-      })
-    end
+      }
+    end,
   },
   -- {
   -- "zbirenbaum/copilot-cmp",
