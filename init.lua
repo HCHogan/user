@@ -130,12 +130,16 @@ return {
     vim.wo.number = true
     vim.wo.relativenumber = true
     local notify = vim.notify
-    vim.notify= function(msg, ...)
-      if msg:match("warning: multiple different client offset_encodings") then
-        return
-      end
+    vim.notify = function(msg, ...)
+      if msg:match "warning: multiple different client offset_encodings" then return end
       notify(msg, ...)
     end
+    vim.cmd [[
+augroup AutoSave
+    autocmd!
+    autocmd TextChanged,TextChangedI <buffer> silent! write
+augroup END
+]]
     -- vim.o.tabstop = 4
     -- vim.bo.tabstop = 4
     -- vim.o.softtabstop = 4
