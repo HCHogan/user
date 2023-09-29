@@ -25,6 +25,13 @@ return {
     ["<leader>as"] = { ":Copilot suggestion<CR>"},
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    -- CompetiTest bindings
+    ["<leader>r"] = { name = " CompetiTest" },
+    ["<leader>rr"] = { ":CompetiTest run<CR>" },
+    ["<leader>rR"] = { ":CompetiTest run_no_compile<CR>" },
+    ["<leader>ra"] = { ":CompetiTest add_testcase<CR>" },
+    ["<leader>re"] = { ":CompetiTest edit_testcase<CR>" },
+    -- my quirks
     ["J"] = { "5j" },
     ["K"] = { "5k" },
     ["H"] = { "5h" },

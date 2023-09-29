@@ -210,6 +210,21 @@ return {
       }
     end,
   },
+  {
+    "xeluxee/competitest.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("competitest").setup {
+        compile_command = {
+          cpp = { exec = "clang++", args = { "-std=c++20", "$(FNAME)", "-o", "$(FNOEXT)" } },
+        },
+        run_command = {
+          cpp = { exec = "./$(FNOEXT)" },
+        },
+      }
+    end,
+  },
   -- {
   -- "zbirenbaum/copilot-cmp",
   -- event = "InsertEnter",
