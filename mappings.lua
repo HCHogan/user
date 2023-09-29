@@ -31,6 +31,10 @@ return {
     ["<leader>rR"] = { ":CompetiTest run_no_compile<CR>" },
     ["<leader>ra"] = { ":CompetiTest add_testcase<CR>" },
     ["<leader>re"] = { ":CompetiTest edit_testcase<CR>" },
+    -- barbar
+    ["]b"] = { ":BufferNext<CR>" },
+    ["[b"] = { ":BufferPrevious<CR>" },
+    ["<leader>bp"] = { ":BufferPick<CR>" },
     -- my quirks
     ["J"] = { "5j" },
     ["K"] = { "5k" },
