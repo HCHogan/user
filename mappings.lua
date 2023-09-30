@@ -35,6 +35,9 @@ return {
     ["]b"] = { ":BufferNext<CR>" },
     ["[b"] = { ":BufferPrevious<CR>" },
     ["<leader>bp"] = { ":BufferPick<CR>" },
+    -- luasnip
+    ["<M-j>"] = {":lua require('luasnip').jump(1)<CR>"},
+    ["<M-k>"] = {":lua require('luasnip').jump(-1)<CR>"},
     -- my quirks
     ["J"] = { "5j" },
     ["K"] = { "5k" },
