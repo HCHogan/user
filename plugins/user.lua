@@ -226,6 +226,10 @@ return {
     end,
   },
   -- {
+  --   "antonk52/bad-practices.nvim",
+  --   event = "VeryLazy",
+  -- },
+  -- {
   --   "simrat39/rust-tools.nvim",
   --   event = "VeryLazy",
   --   config = function()
