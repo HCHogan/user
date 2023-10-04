@@ -226,6 +226,17 @@ return {
     end,
   },
   -- {
+  --   "simrat39/rust-tools.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require('rust-tools').setup {
+  --       server = {
+  --         standalone = true,
+  --       }
+  --     }
+  --   end,
+  -- },
+  -- {
   -- "zbirenbaum/copilot-cmp",
   -- event = "InsertEnter",
   -- config = function ()
