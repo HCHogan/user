@@ -85,6 +85,7 @@ return {
       require("catppuccin").setup {
         integrations = {
           flash = true,
+          noice = true,
           neotree = true,
           treesitter = true,
           notify = true,
