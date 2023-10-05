@@ -76,7 +76,7 @@ return {
       -- …etc.
     },
     version = "^1.0.0", -- optional: only update when a new 1.x version is released
-    event = "VeryLazy",
+    event = "BufEnter",
   },
   {
     "catppuccin/nvim",
@@ -217,8 +217,11 @@ return {
     event = "VeryLazy",
     config = function()
       require("competitest").setup {
+        runner_ui = {
+          interface = "split",
+        },
         compile_command = {
-          cpp = { exec = "clang++", args = { "-std=c++20", "$(FNAME)", "-o", "$(FNOEXT)" } },
+          cpp = { exec = "clang++", args = { "-std=c++2b", "$(FNAME)", "-o", "$(FNOEXT)" } },
         },
         run_command = {
           cpp = { exec = "./$(FNOEXT)" },

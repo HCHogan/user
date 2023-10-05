@@ -18,7 +18,7 @@ return {
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
-    ["<leader>a"] = { name = "󱠁 AICmp" },
+    ["<leader>a"] = { name = " Copilot" },
     ["<leader>ae"] = { ":Copilot enable<CR>" },
     ["<leader>ad"] = { ":Copilot disable<CR>"},
     ["<leader>ap"] = { ":Copilot panel<CR>"},
@@ -40,11 +40,15 @@ return {
     ["<M-k>"] = {":lua require('luasnip').jump(-1)<CR>"},
     -- my quirks
     ["J"] = { "5j" },
-    ["K"] = { "5k" },
+    -- ["K"] = { "5k" },
     ["H"] = { "5h" },
     ["L"] = { "5l" },
     [";"] = { ":" },
     ["<F5>"] = {":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>"},
+    -- inlay_hints
+    ["<leader>i"] = { name = "󱠁 Inlay Hints" },
+    ["<leader>ie"] = { "<cmd>lua vim.lsp.inlay_hint(0, true)<CR>"},
+    ["<leader>id"] = { "<cmd>lua vim.lsp.inlay_hint(0, false)<CR>"},
   },
   t = {
     -- setting a mapping to false will disable it
