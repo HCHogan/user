@@ -23,7 +23,9 @@ return {
     ui_notifications_enabled = true, -- disable notifications when toggling UI elements
     resession_enabled = false, -- enable experimental resession.nvim session management (will be default in AstroNvim v4)
     neovide_input_macos_alt_is_meta = true,
-    neovide_cursor_vfx_mode = "pixiedust"
+    neovide_cursor_vfx_mode = "pixiedust",
+    neovide_refresh_rate = 120,
+    neovide_refresh_rate_idle = 5,
 
     -- encoding = "UTF-8",
   },
