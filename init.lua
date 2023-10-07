@@ -113,10 +113,9 @@ return {
     vim.wo.number = true
     vim.wo.relativenumber = true
     require("notify").setup {
-      max_width = 40,
       timeout = 500,
       fps = 120,
-      level = "info",
+      level = "warn",
       render = "compact",
     }
 
