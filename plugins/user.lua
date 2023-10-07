@@ -97,7 +97,7 @@ return {
           },
           dropbar = {
             enabled = true,
-            color_mode = true,
+            color_mode = false,
           },
           indent_blankline = {
             enabled = true,

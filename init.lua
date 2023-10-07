@@ -18,23 +18,6 @@ return {
   },
 
   plugins = {
-    {
-      "goolord/alpha-nvim",
-      opts = function(_, opts) -- override the options using lazy.nvim
-        opts.section.header.val = { -- change the header section value
-          " Hank Hogan",
-          " Dashboard Header",
-        }
-      end,
-    },
-    {
-      "xbase-lab/xbase",
-      config = function()
-        require("xbase").setup {
-          -- your xbase config here
-        }
-      end,
-    },
   },
 
   -- Set colorscheme to use
@@ -130,11 +113,11 @@ return {
     vim.wo.number = true
     vim.wo.relativenumber = true
     require("notify").setup {
-      max_width = 30,
+      max_width = 40,
       timeout = 500,
       fps = 120,
-      level = "warn",
-      render = "default",
+      level = "info",
+      render = "compact",
     }
 
     local ls = require "luasnip"
@@ -155,18 +138,7 @@ return {
     local l = extras.l
     local postfix = require("luasnip.extras.postfix").postfix
 
-    ls.add_snippets("all", {
-      s("ternary", {
-        -- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
-        i(1, "cond"),
-        t " ? ",
-        i(2, "then"),
-        t " : ",
-        i(3, "else"),
-      }),
-    })
-
-    ls.add_snippets("all", {
+    ls.add_snippets("cpp", {
       s("acm", {
         t {
           "// Created by Hank Hogan",

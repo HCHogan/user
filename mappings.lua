@@ -47,11 +47,23 @@ return {
     ["L"] = { "5l" },
     [";"] = { ":" },
     ["<F5>"] = { ":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>" },
+    -- zen_mode
+    ["<leader>uz"] = {"<cmd>ZenMode<CR>"},
     -- inlay_hints
-    ["<leader>i"] = { name = "󱠁 Inlay Hints" },
-    ["<leader>ie"] = { "<cmd>lua vim.lsp.inlay_hint(0, true)<CR>" },
-    ["<leader>id"] = { "<cmd>lua vim.lsp.inlay_hint(0, false)<CR>" },
+    -- ["<leader>i"] = { name = "󱠁 Inlay Hints" },
+    -- ["<leader>ie"] = { "<cmd>lua vim.lsp.inlay_hint(0, true)<CR>" },
+    -- ["<leader>id"] = { "<cmd>lua vim.lsp.inlay_hint(0, false)<CR>" },
+    -- neovide settings
     ["<C-N>"] = { ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>" },
+    -- open dashboard when no more buffers
+    -- ["<leader>c"] = {
+    --   function()
+    --     local bufs = vim.fn.getbufinfo { buflisted = true }
+    --     require("astronvim.utils.buffer").close(0)
+    --     if require("astronvim.utils").is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
+    --   end,
+    --   desc = "Close buffer",
+    -- },
   },
   t = {
     -- setting a mapping to false will disable it
