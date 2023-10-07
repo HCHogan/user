@@ -333,27 +333,27 @@ return {
     --   }),
     -- })
 
-    local cmp_nvim_lsp = require "cmp_nvim_lsp"
-
-    require("lspconfig").clangd.setup {
-      on_attach = on_attach,
-      capabilities = cmp_nvim_lsp.default_capabilities(),
-      cmd = {
-        "clangd",
-        "--offset-encoding=utf-16",
-      },
-    }
-
-    -- FIXME: no Run | Debug; can't go to definition
-    local rust_tools_opts = {
-      server = {
-        -- standalone file support
-        -- setting it to false may improve startup time
-        standalone = true,
-      }, -- rust-analyzer options
-    }
-
-    require("rust-tools").setup(rust_tools_opts)
+    -- local cmp_nvim_lsp = require "cmp_nvim_lsp"
+    --
+    -- require("lspconfig").clangd.setup {
+    --   on_attach = on_attach,
+    --   capabilities = cmp_nvim_lsp.default_capabilities(),
+    --   cmd = {
+    --     "clangd",
+    --     "--offset-encoding=utf-16",
+    --   },
+    -- }
+    --
+    -- -- FIXME: no Run | Debug; can't go to definition
+    -- local rust_tools_opts = {
+    --   server = {
+    --     -- standalone file support
+    --     -- setting it to false may improve startup time
+    --     standalone = true,
+    --   }, -- rust-analyzer options
+    -- }
+    --
+    -- require("rust-tools").setup(rust_tools_opts)
 
     -- vim.o.tabstop = 4
     -- vim.bo.tabstop = 4
