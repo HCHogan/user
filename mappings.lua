@@ -25,6 +25,13 @@ return {
     ["<leader>ad"] = { ":Copilot disable<CR>" },
     ["<leader>ap"] = { ":Copilot panel<CR>" },
     ["<leader>as"] = { ":Copilot suggestion<CR>" },
+    ["<leader>ac"] = { ":ChatGPT<CR>"},
+    ["<leader>art"] = { ":ChatGPTRun add_tests<CR>"},
+    ["<leader>aro"] = { ":ChatGPTRun optimize_code<CR>"},
+    ["<leader>ars"] = { ":ChatGPTRun summarize<CR>"},
+    ["<leader>are"] = { ":ChatGPTRun explain_code<CR>"},
+    ["<leader>arf"] = { ":ChatGPTRun fix_bugs<CR>"},
+    ["<leader>ard"] = { ":ChatGPTRun docstring<CR>"},
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     -- CompetiTest bindings

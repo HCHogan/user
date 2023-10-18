@@ -17,8 +17,7 @@ return {
     },
   },
 
-  plugins = {
-  },
+  plugins = {},
 
   -- Set colorscheme to use
   -- colorscheme = "astrodark",
@@ -163,6 +162,23 @@ return {
         },
       }),
     })
+
+    -- require'lspconfig'.rust_analyzer.setup {
+    --   settings = {
+    --     ['rust-analyzer'] = {
+    --       inlayHints = {
+    --         reborrowHints = {
+    --           enable = "always",
+    --         },
+    --         lifetimeElisonHints = {
+    --           enable = "always",
+    --         }
+    --       }
+    --     }
+    --   }
+    -- }
+
+
 
     -- ls.add_snippets("all", {
     --   s("racm", {
@@ -315,16 +331,6 @@ return {
     --   },
     -- }
     --
-    -- -- FIXME: no Run | Debug; can't go to definition
-    -- local rust_tools_opts = {
-    --   server = {
-    --     -- standalone file support
-    --     -- setting it to false may improve startup time
-    --     standalone = true,
-    --   }, -- rust-analyzer options
-    -- }
-    --
-    -- require("rust-tools").setup(rust_tools_opts)
 
     -- vim.o.tabstop = 4
     -- vim.bo.tabstop = 4

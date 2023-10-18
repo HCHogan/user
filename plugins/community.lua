@@ -6,7 +6,7 @@ return {
 
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.go" },
@@ -20,6 +20,7 @@ return {
   { import = "astrocommunity.bars-and-lines.dropbar-nvim" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
+  { import = "astrocommunity.editing-support.chatgpt-nvim" },
   -- { import = "astrocommunity.workflow.bad-practices-nvim"},
   -- { import = "astrocommunity.code-runner.sniprun" },
   -- { import = "astrocommunity.code-runner.overseer-nvim"},

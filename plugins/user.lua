@@ -65,7 +65,7 @@ return {
   {
     "romgrk/barbar.nvim",
     dependencies = {
-      "lewis6991/gitsigns.nvim",     -- OPTIONAL: for git status
+      "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
       "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
     },
     init = function() vim.g.barbar_auto_setup = false end,
@@ -229,6 +229,35 @@ return {
       }
     end,
   },
+  -- {
+  --   "nvimdev/dyninput.nvim",
+  --   config = function()
+  --     local rs = require "dyninput.lang.rust"
+  --     local ms = require "dyninput.lang.misc"
+  --     require("dyninput").setup {
+  --       c = {
+  --         ["-"] = {
+  --           { "->", ms.c_struct_pointer },
+  --           { "_", ms.snake_case },
+  --         },
+  --       },
+  --       rust = {
+  --         [";"] = {
+  --           { "::", rs.double_colon },
+  --           { ": ", rs.single_colon },
+  --         },
+  --         ["="] = { " => ", rs.fat_arrow },
+  --         ["-"] = {
+  --           { " -> ", rs.thin_arrow },
+  --           { "_", ms.snake_case },
+  --         },
+  --         ["\\"] = { "|!| {}", rs.closure_fn },
+  --       },
+  --     }
+  --   end,
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  --   event = "BufRead",
+  -- },
   -- {
   --   "antonk52/bad-practices.nvim",
   --   event = "VeryLazy",
