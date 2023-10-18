@@ -118,6 +118,44 @@ return {
       render = "compact",
     }
 
+    -- if vim.api.nvim_buf_get_option(0, "filetype") == "java" then
+    --   vim.api.nvim_set_keymap(
+    --     "n",
+    --     "<leader>gd",
+    --     "<cmd>lua vim.lsp.buf.definition()<CR>",
+    --     { noremap = true, silent = true }
+    --   )
+    --   vim.api.nvim_set_keymap(
+    --     "n",
+    --     "<leader>gD",
+    --     "<cmd>lua vim.lsp.buf.declaration()<CR>",
+    --     { noremap = true, silent = true }
+    --   )
+    --   vim.api.nvim_set_keymap(
+    --     "n",
+    --     "<leader>gi",
+    --     "<cmd>lua vim.lsp.buf.implementation()<CR>",
+    --     { noremap = true, silent = true }
+    --   )
+    --   vim.api.nvim_set_keymap(
+    --     "n",
+    --     "<leader>gr",
+    --     "<cmd>lua vim.lsp.buf.references()<CR>",
+    --     { noremap = true, silent = true }
+    --   )
+    -- end
+    --
+    -- local function map(mode, lhs, rhs, opts)
+    --   local options = { noremap = true }
+    --   if opts then options = vim.tbl_extend("force", options, opts) end
+    --   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    -- end
+    --
+    -- vim.api.nvim_create_autocmd("BufRead", {
+    --   pattern = "*.java",
+    --   callback = function() map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { buffer = true }) end,
+    -- })
+
     local ls = require "luasnip"
     local s = ls.snippet
     local sn = ls.snippet_node
@@ -177,8 +215,6 @@ return {
     --     }
     --   }
     -- }
-
-
 
     -- ls.add_snippets("all", {
     --   s("racm", {

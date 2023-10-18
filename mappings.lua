@@ -40,6 +40,11 @@ return {
     ["<leader>rR"] = { ":CompetiTest run_no_compile<CR>" },
     ["<leader>ra"] = { ":CompetiTest add_testcase<CR>" },
     ["<leader>re"] = { ":CompetiTest edit_testcase<CR>" },
+    -- java
+    ["gd"] = { ":lua vim.lsp.buf.definition()<CR>"},
+    ["gD"] = { ":lua vim.lsp.buf.declaration()<CR>"},
+    ["gi"] = {":lua vim.lsp.buf.implementation()<CR>"},
+    ["gr"] = {":lua vim.lsp.buf.references()<CR>"},
     -- barbar
     ["]b"] = { ":BufferNext<CR>" },
     ["[b"] = { ":BufferPrevious<CR>" },
