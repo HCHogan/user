@@ -1,6 +1,16 @@
 return {
   settings = {
     ["rust-analyzer"] = {
+      checkOnSave = {
+        command = "clippy",
+        allTargets = false,
+      },
+      -- diagnostics = {
+      --   enable = true,
+      --   experimental = {
+      --     enable = true,
+      --   }
+      -- },
       inlayHints = {
         -- reborrowHints = {
         --   enable = "always",

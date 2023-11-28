@@ -1,5 +1,7 @@
 -- TODO: Test
 
+local leet_arg = "lc"
+
 return {
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
@@ -83,6 +85,26 @@ return {
     name = "catppuccin",
     config = function()
       require("catppuccin").setup {
+        transparent_background = false,
+        -- dim_inactive = {
+        --   enabled = true,
+        --   shade = "dark",
+        --   percentage = 0.15,
+        -- },
+        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" }, -- Change the style of comments
+          conditionals = { "italic" },
+          loops = {},
+          functions = {},
+          keywords = { "bold" },
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = {},
+          properties = {},
+          types = {},
+          operators = {},
+        },
         integrations = {
           flash = true,
           noice = true,
@@ -214,6 +236,11 @@ return {
   {
     "xeluxee/competitest.nvim",
     dependencies = "MunifTanjim/nui.nvim",
+    ft = {
+      "cpp",
+      "c",
+      "rust",
+    },
     event = "VeryLazy",
     config = function()
       require("competitest").setup {
@@ -229,6 +256,54 @@ return {
       }
     end,
   },
+  {
+    "wojciech-kulik/xcodebuild.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    -- ft = {
+    --   "swift",
+    --   -- "objcpp",
+    --   -- "objc",
+    -- },
+    event = "BufEnter *.swift",
+    config = function()
+      require("astronvim.utils.lsp").setup "sourcekit"
+      require("xcodebuild").setup()
+      vim.keymap.set("n", "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", { desc = "Toggle Xcodebuild Logs" })
+      vim.keymap.set("n", "<leader>xb", "<cmd>XcodebuildBuild<cr>", { desc = "Build Project" })
+      vim.keymap.set("n", "<leader>xr", "<cmd>XcodebuildBuildRun<cr>", { desc = "Build & Run Project" })
+      vim.keymap.set("n", "<leader>xt", "<cmd>XcodebuildTest<cr>", { desc = "Run Tests" })
+      vim.keymap.set("n", "<leader>xT", "<cmd>XcodebuildTestClass<cr>", { desc = "Run This Test Class" })
+      vim.keymap.set("n", "<leader>X", "<cmd>XcodebuildPicker<cr>", { desc = "Show All Xcodebuild Actions" })
+      vim.keymap.set("n", "<leader>xd", "<cmd>XcodebuildSelectDevice<cr>", { desc = "Select Device" })
+      vim.keymap.set("n", "<leader>xp", "<cmd>XcodebuildSelectTestPlan<cr>", { desc = "Select Test Plan" })
+      vim.keymap.set("n", "<leader>xq", "<cmd>Telescope quickfix<cr>", { desc = "Show QuickFix List" })
+    end,
+  },
+  -- {
+  --   "kawre/leetcode.nvim",
+  --   build = ":TSUpdate html",
+  --   lazy = leet_arg ~= vim.fn.argv()[1],
+  --   dependencies = {
+  --       "nvim-telescope/telescope.nvim",
+  --       "nvim-lua/plenary.nvim", -- required by telescope
+  --       "MunifTanjim/nui.nvim",
+  --
+  --       -- optional
+  --       "nvim-treesitter/nvim-treesitter",
+  --       "rcarriga/nvim-notify",
+  --       "nvim-tree/nvim-web-devicons",
+  --   },
+  --   opts = {
+  --     arg = "lc",
+  --     lang = "cpp",
+  --     logging = true,
+  --     cn = {
+  --       enabled = true,
+  --       translate = false,
+  --       translate_problems = false,
+  --     },
+  --   },
+  -- },
   -- {
   --   "nvimdev/dyninput.nvim",
   --   config = function()

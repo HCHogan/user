@@ -36,7 +36,7 @@ return {
     -- expandtab = true,
   },
   o = {
-    guifont = "Fira Code iScript:h17",
+    guifont = "Recursive:h17",
   },
 }
 

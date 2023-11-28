@@ -2,9 +2,9 @@ return {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
+    channel = "nightly", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly", -- branch name (NIGHTLY ONLY)
+    branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
     pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
     skip_prompts = false, -- skip prompts about breaking changes
@@ -114,9 +114,10 @@ return {
     require("notify").setup {
       timeout = 500,
       fps = 120,
-      level = "warn",
+      level = "error",
       render = "compact",
     }
+    -- require("astronvim.utils.lsp").setup("sourcekit")
 
     -- if vim.api.nvim_buf_get_option(0, "filetype") == "java" then
     --   vim.api.nvim_set_keymap(
