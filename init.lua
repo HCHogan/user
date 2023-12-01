@@ -43,7 +43,7 @@ return {
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
-        -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
+      -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
       },
       timeout_ms = 1000, -- default format timeout
@@ -102,291 +102,58 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    -- utf8
-    -- vim.g.encoding = "UTF-8"
-    -- vim.o.fileencoding = "utf-8"
-    -- -- jk移动时光标下上方保留8行
-    vim.o.scrolloff = 5
-    vim.o.sidescrolloff = 5
-    -- 使用相对行号
-    vim.wo.number = true
-    vim.wo.relativenumber = true
-    require("notify").setup {
-      timeout = 500,
-      fps = 120,
-      level = "error",
-      render = "compact",
-    }
-    -- require("astronvim.utils.lsp").setup("sourcekit")
-
-    -- if vim.api.nvim_buf_get_option(0, "filetype") == "java" then
-    --   vim.api.nvim_set_keymap(
-    --     "n",
-    --     "<leader>gd",
-    --     "<cmd>lua vim.lsp.buf.definition()<CR>",
-    --     { noremap = true, silent = true }
-    --   )
-    --   vim.api.nvim_set_keymap(
-    --     "n",
-    --     "<leader>gD",
-    --     "<cmd>lua vim.lsp.buf.declaration()<CR>",
-    --     { noremap = true, silent = true }
-    --   )
-    --   vim.api.nvim_set_keymap(
-    --     "n",
-    --     "<leader>gi",
-    --     "<cmd>lua vim.lsp.buf.implementation()<CR>",
-    --     { noremap = true, silent = true }
-    --   )
-    --   vim.api.nvim_set_keymap(
-    --     "n",
-    --     "<leader>gr",
-    --     "<cmd>lua vim.lsp.buf.references()<CR>",
-    --     { noremap = true, silent = true }
-    --   )
-    -- end
-    --
-    -- local function map(mode, lhs, rhs, opts)
-    --   local options = { noremap = true }
-    --   if opts then options = vim.tbl_extend("force", options, opts) end
-    --   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-    -- end
-    --
-    -- vim.api.nvim_create_autocmd("BufRead", {
-    --   pattern = "*.java",
-    --   callback = function() map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { buffer = true }) end,
-    -- })
-
-    local ls = require "luasnip"
-    local s = ls.snippet
-    local sn = ls.snippet_node
-    local isn = ls.indent_snippet_node
-    local t = ls.text_node
-    local i = ls.insert_node
-    local f = ls.function_node
-    local c = ls.choice_node
-    local d = ls.dynamic_node
-    local r = ls.restore_node
-    local events = require "luasnip.util.events"
-    local ai = require "luasnip.nodes.absolute_indexer"
-    local extras = require "luasnip.extras"
-    local fmt = extras.fmt
-    local m = extras.m
-    local l = extras.l
-    local postfix = require("luasnip.extras.postfix").postfix
-
-    ls.add_snippets("cpp", {
-      s("acm", {
-        t {
-          "// Created by Hank Hogan",
-          "",
-          "#include <iostream>",
-          "#include <vector>",
-          "",
-          "using namespace std;",
-          "",
-          "int main(int argc, char *argv[]) {",
-          "  ios::sync_with_stdio(false);",
-          "  cin.tie(nullptr);",
-          "  cout.tie(nullptr);",
-          "",
-          "  ",
-        },
-        i(1),
-        t {
-          "",
-          "",
-          "  return 0;",
-          "}",
-        },
-      }),
-    })
-
-    -- require'lspconfig'.rust_analyzer.setup {
-    --   settings = {
-    --     ['rust-analyzer'] = {
-    --       inlayHints = {
-    --         reborrowHints = {
-    --           enable = "always",
-    --         },
-    --         lifetimeElisonHints = {
-    --           enable = "always",
-    --         }
-    --       }
-    --     }
-    --   }
+    -- require("notify").setup {
+    --   timeout = 500,
+    --   fps = 120,
+    --   level = "error",
+    --   render = "compact",
     -- }
 
-    -- ls.add_snippets("all", {
-    --   s("racm", {
+    -- local ls = require "luasnip"
+    -- local s = ls.snippet
+    -- local sn = ls.snippet_node
+    -- local isn = ls.indent_snippet_node
+    -- local t = ls.text_node
+    -- local i = ls.insert_node
+    -- local f = ls.function_node
+    -- local c = ls.choice_node
+    -- local d = ls.dynamic_node
+    -- local r = ls.restore_node
+    -- local events = require "luasnip.util.events"
+    -- local ai = require "luasnip.nodes.absolute_indexer"
+    -- local extras = require "luasnip.extras"
+    -- local fmt = extras.fmt
+    -- local m = extras.m
+    -- local l = extras.l
+    -- local postfix = require("luasnip.extras.postfix").postfix
+    --
+    -- ls.add_snippets("cpp", {
+    --   s("acm", {
     --     t {
-    --       "#![allow(unused_variables)]",
-    --       "#![allow(unused_must_use)]",
-    --       "use std::io::{self, prelude::*};",
+    --       "// Created by Hank Hogan",
     --       "",
-    --       "// Example of usage:",
-    --       "// let n: usize = input.token();",
-    --       "// let mut a = vec![0usize; n];",
-    --       "// let mut b = vec![0usize; n];",
-    --       "// for (x, y) in a.iter_mut().zip(b.iter_mut()) {",
-    --       "//     *x = input.token();",
-    --       "//     *y = input.token();",
-    --       "// }",
-    --       "// let mut order: Vec<_> = (0..n).collect();",
-    --       "// order.sort_by(|&i, &j| {",
-    --       "//     let z1 = a[i] + b[j];",
-    --       "//     let z2 = a[j] + b[i];",
-    --       "//     return z2.cmp(&z1);",
-    --       "// });",
-    --       "// let mut ans = 0u64;",
-    --       "// for (i, &x) in order.iter().enumerate() {",
-    --       "//     ans += a[x] as u64 * i as u64 + b[x] as u64 * (n - 1 - i) as u64;",
-    --       "// }",
-    --       '// write!(w, "{}\\n", ans);',
-    --       "fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {",
-    --       "    ",
+    --       "#include <iostream>",
+    --       "#include <vector>",
+    --       "",
+    --       "using namespace std;",
+    --       "",
+    --       "int main(int argc, char *argv[]) {",
+    --       "  ios::sync_with_stdio(false);",
+    --       "  cin.tie(nullptr);",
+    --       "  cout.tie(nullptr);",
+    --       "",
+    --       "  ",
     --     },
     --     i(1),
     --     t {
     --       "",
-    --       "}",
     --       "",
-    --       "fn main() {",
-    --       "    let stdin = io::stdin();",
-    --       "    let stdout = io::stdout();",
-    --       "    let input = FastInput::from(stdin.lock());",
-    --       "    let writer = io::BufWriter::new(stdout.lock());",
-    --       "    solve(input, writer);",
+    --       "  return 0;",
     --       "}",
-    --       "",
-    --       "trait TokenStream<T> {",
-    --       "    fn token(&mut self) -> T;",
-    --       "}",
-    --       "",
-    --       "struct FastInput<R> {",
-    --       "    stdin: R,",
-    --       "    pos: usize,",
-    --       "}",
-    --       "",
-    --       "impl<R: BufRead> From<R> for FastInput<R> {",
-    --       "    fn from(r: R) -> Self {",
-    --       "        FastInput { stdin: r, pos: 0 }",
-    --       "    }",
-    --       "}",
-    --       "",
-    --       "impl<R: BufRead> TokenStream<u8> for FastInput<R> {",
-    --       "    fn token(&mut self) -> u8 {",
-    --       "        loop {",
-    --       "            if let Ok(buf) = self.stdin.fill_buf() {",
-    --       "                while self.pos < buf.len() {",
-    --       "                    self.pos += 1;",
-    --       "                    if buf[self.pos - 1] > 32 {",
-    --       "                        return buf[self.pos - 1];",
-    --       "                    }",
-    --       "                }",
-    --       "                if self.pos == 0 {",
-    --       "                    return 0;",
-    --       "                }",
-    --       "            } else {",
-    --       "                return 0;",
-    --       "            }",
-    --       "            self.stdin.consume(self.pos);",
-    --       "            self.pos = 0;",
-    --       "        }",
-    --       "    }",
-    --       "}",
-    --       "",
-    --       "impl<R: BufRead> TokenStream<Vec<u8>> for FastInput<R> {",
-    --       "    fn token(&mut self) -> Vec<u8> {",
-    --       "        let mut ans = Vec::new();",
-    --       "        let mut parse_token = false;",
-    --       "        loop {",
-    --       "            if let Ok(buf) = self.stdin.fill_buf() {",
-    --       "                if !parse_token {",
-    --       "                    while self.pos < buf.len() && buf[self.pos] <= 32 {",
-    --       "                        self.pos += 1;",
-    --       "                    }",
-    --       "                }",
-    --       "                while self.pos < buf.len() && buf[self.pos] > 32 {",
-    --       "                    parse_token = true;",
-    --       "                    ans.push(buf[self.pos]);",
-    --       "                    self.pos += 1;",
-    --       "                }",
-    --       "                if self.pos != buf.len() || self.pos == 0 {",
-    --       "                    return ans;",
-    --       "                }",
-    --       "            }",
-    --       "            self.stdin.consume(self.pos);",
-    --       "            self.pos = 0;",
-    --       "        }",
-    --       "    }",
-    --       "}",
-    --       "",
-    --       "macro_rules! impl_token_stream {",
-    --       "    ($($t:ident),+) => {$(",
-    --       "        impl<R: BufRead> TokenStream<$t> for FastInput<R> {",
-    --       "           fn token(&mut self) -> $t {",
-    --       "                let mut ans = 0;",
-    --       "                let mut parse_token = false;",
-    --       "                loop {",
-    --       "                    if let Ok(buf) = self.stdin.fill_buf() {",
-    --       "                        if !parse_token {",
-    --       "                            while self.pos < buf.len() && buf[self.pos] <= 32 {",
-    --       "                                self.pos += 1;",
-    --       "                            }",
-    --       "                        }",
-    --       "                        while self.pos < buf.len() && buf[self.pos] > 32 {",
-    --       "                            parse_token = true;",
-    --       "                            ans = ans * 10 + (buf[self.pos] - b'0') as $t",
-    --       "                            self.pos += 1;",
-    --       "                        }",
-    --       "                        if self.pos != buf.len() || self.pos == 0 {",
-    --       "                            return ans;",
-    --       "                        }",
-    --       "                    }",
-    --       "                    self.stdin.consume(self.pos);",
-    --       "                    self.pos = 0;",
-    --       "                }",
-    --       "           }",
-    --       "        }",
-    --       "    )+}",
-    --       "}",
-    --       "",
-    --       "impl_token_stream!(usize);",
     --     },
     --   }),
     -- })
 
-    -- local cmp_nvim_lsp = require "cmp_nvim_lsp"
-    --
-    -- require("lspconfig").clangd.setup {
-    --   on_attach = on_attach,
-    --   capabilities = cmp_nvim_lsp.default_capabilities(),
-    --   cmd = {
-    --     "clangd",
-    --     "--offset-encoding=utf-16",
-    --   },
-    -- }
-    --
 
-    -- vim.o.tabstop = 4
-    -- vim.bo.tabstop = 4
-    -- vim.o.softtabstop = 4
-    -- vim.o.shiftround = true
-    -- -- >> << 时移动长度
-    -- vim.o.shiftwidth = 4
-    -- vim.bo.shiftwidth = 4
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
   end,
 }
