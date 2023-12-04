@@ -58,7 +58,7 @@ return {
     ["H"] = { "5h" },
     ["L"] = { "5l" },
     [";"] = { ":" },
-    ["<F5>"] = { ":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>" },
+    -- ["<F5>"] = { ":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>" },
     -- zen_mode
     ["<leader>uz"] = {"<cmd>ZenMode<CR>"},
     -- inlay_hints

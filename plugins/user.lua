@@ -107,6 +107,8 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
+      local colors = require("catppuccin.palettes").get_palette "mocha"
+      colors.none = "NONE"
       require("catppuccin").setup {
         transparent_background = false,
         styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
@@ -142,6 +144,10 @@ return {
           indent_blankline = {
             enabled = true,
             colored_indent_levels = true,
+          },
+          dap = {
+            enabled = true,
+            enable_ui = true,
           },
           barbar = true,
           aerial = true,
