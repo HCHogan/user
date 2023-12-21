@@ -1,0 +1,29 @@
+fn manacher<T: Eq>(arr: &[T]) -> Vec<usize> {
+    let n = arr.len();
+    let mut mana: Vec<usize> = vec![1; n];
+    let mut r: usize = 1;
+    let mut p: usize = 0;
+
+    for i in 1..arr.len() {
+        if i + 1 >= r {
+            mana[i] = 1;
+        } else {
+            let j = 2 * p - i;
+            mana[i] = mana[j].min(r - i);
+        }
+
+        while mana[i] <= i && i + mana[i] < n {
+            if arr[(i - mana[i])] != arr[(i + mana[i])] {
+                break;
+            }
+            mana[i] += 1;
+        }
+
+        if r < mana[i] + i {
+            r = mana[i] + i;
+            p = i;
+        }
+    }
+
+    mana
+}

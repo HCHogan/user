@@ -12,7 +12,15 @@ return {
     wrap = false, -- sets vim.opt.wrap
     termguicolors = true,
     scrolloff = 5,
-    sidescrolloff = 5
+    sidescrolloff = 5,
+    list = true,
+    listchars = {
+      tab = "» ",
+      trail = "·",
+      extends = "…",
+      precedes = "…",
+      nbsp = "␣",
+    },
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader

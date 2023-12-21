@@ -1,3 +1,5 @@
+local leet_arg = "lc"
+
 return {
   {
     "folke/todo-comments.nvim",
@@ -37,6 +39,7 @@ return {
       local s = ls.snippet
       local t = ls.text_node
       local i = ls.insert_node
+      -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/user/snippets" } })
 
       ls.add_snippets("cpp", {
         s("acm", {
@@ -277,31 +280,31 @@ return {
       vim.keymap.set("n", "<leader>xq", "<cmd>Telescope quickfix<cr>", { desc = "Show QuickFix List" })
     end,
   },
-  -- {
-  --   "kawre/leetcode.nvim",
-  --   build = ":TSUpdate html",
-  --   lazy = leet_arg ~= vim.fn.argv()[1],
-  --   dependencies = {
-  --       "nvim-telescope/telescope.nvim",
-  --       "nvim-lua/plenary.nvim", -- required by telescope
-  --       "MunifTanjim/nui.nvim",
-  --
-  --       -- optional
-  --       "nvim-treesitter/nvim-treesitter",
-  --       "rcarriga/nvim-notify",
-  --       "nvim-tree/nvim-web-devicons",
-  --   },
-  --   opts = {
-  --     arg = "lc",
-  --     lang = "cpp",
-  --     logging = true,
-  --     cn = {
-  --       enabled = true,
-  --       translate = false,
-  --       translate_problems = false,
-  --     },
-  --   },
-  -- },
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
+    lazy = leet_arg ~= vim.fn.argv()[1],
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim", -- required by telescope
+        "MunifTanjim/nui.nvim",
+
+        -- optional
+        "nvim-treesitter/nvim-treesitter",
+        "rcarriga/nvim-notify",
+        "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      arg = "lc",
+      lang = "rust",
+      logging = true,
+      cn = {
+        enabled = true,
+        translate = true,
+        translate_problems = true,
+      },
+    },
+  },
   -- {
   --   "nvimdev/dyninput.nvim",
   --   config = function()

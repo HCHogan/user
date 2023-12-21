@@ -1,0 +1,14 @@
+fn isqrt<T>(s: T) -> T
+where T: Copy + Shr<Output = T> + Add<Output = T> + Div<Output = T> + PartialOrd + From<u8> {
+    let mut x0 = s >> 1.into();
+    if x0 != 0.into() {
+        let mut x1 = (x0 + s / x0) >> 1.into();
+        while x1 < x0 {
+            x0 = x1;
+            x1 = (x0 + s / x0) >> 1.into();
+        }
+        x0
+    } else {
+        s
+    }
+}

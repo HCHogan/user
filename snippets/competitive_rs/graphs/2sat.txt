@@ -1,0 +1,39 @@
+mod twosat {
+    use super::scc::*;
+
+    /// 2-SAT solver.
+    pub struct TwoSat {
+        n: usize,
+        graph: Vec<Vec<usize>>,
+    }
+
+    impl TwoSat {
+        /// Creates a new instance of 2-SAT solver.
+        pub fn new(n: usize) -> Self {
+            Self { n, graph: vec![vec![]; n << 1] }
+        }
+
+        /// Adds a clause of `(i, f) & (j, g)`.
+        /// For example, `self.add_clause((0, false), (1, true))` is adding a clause `~x0 & x1` to the solver.
+        pub fn add_clause(&mut self, (i, f): (usize, bool), (j, g): (usize, bool)) {
+            let judge = |x: bool, a: usize, b: usize| if x { a } else { b };
+            self.graph[i * 2 + judge(f, 0, 1)].push(j * 2 + judge(g, 1, 0));
+            self.graph[j * 2 + judge(g, 0, 1)].push(i * 2 + judge(f, 1, 0));
+        }
+
+        /// Returns any possible solution of the 2-SAT problem if there's any in O(N) time.
+        /// Returns `None` if the problem is unsolvable.
+        pub fn solve(&self) -> Option<Vec<bool>> {
+            let mut ans = vec![false; self.n];
+            let scc_list = find_scc(&self.graph);
+            let ids = gen_scc_ids(&self.graph, &scc_list);
+            for i in 0..self.n {
+                if ids[i * 2] == ids[i * 2 + 1] {
+                    return None;
+                }
+                ans[i] = ids[i * 2] < ids[i * 2 + 1];
+            }
+            Some(ans)
+        }
+    }
+}

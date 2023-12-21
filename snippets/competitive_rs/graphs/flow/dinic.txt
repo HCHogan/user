@@ -1,0 +1,107 @@
+mod dinic {
+    //! Reference: https://github.com/justiceHui/SSU-SCCC-Study/blob/master/2022-winter-adv/slide/04.pdf
+
+    use std::collections::VecDeque;
+
+    #[derive(Clone)]
+    pub struct Edge {
+        pub dst: u32,
+        pub opp: u32,
+        pub cap: u64,
+    }
+
+    impl Edge {
+        fn new(dst: usize, opp: usize, cap: u64) -> Self {
+            Self {
+                dst: dst as u32,
+                opp: opp as u32,
+                cap,
+            }
+        }
+    }
+
+    pub struct Dinic {
+        pub n: usize,
+        pub g: Vec<Vec<Edge>>,
+    }
+
+    impl Dinic {
+        pub fn new(n: usize) -> Self {
+            Self {
+                n,
+                g: vec![vec![]; n],
+            }
+        }
+
+        pub fn add_edge(&mut self, s: usize, e: usize, cap: u64) {
+            let sl = self.g[s].len();
+            let el = self.g[e].len();
+            self.g[s].push(Edge::new(e, el, cap));
+            self.g[e].push(Edge::new(s, sl, 0));
+        }
+
+        fn bfs(&mut self, s: u32, t: u32, lv: &mut [u32]) -> bool {
+            lv.fill(0);
+
+            let mut queue = VecDeque::new();
+            queue.push_back(s);
+            lv[s as usize] = 1;
+
+            while let Some(v) = queue.pop_front() {
+                for e in self.g[v as usize].iter() {
+                    if lv[e.dst as usize] == 0 && e.cap != 0 {
+                        queue.push_back(e.dst);
+                        lv[e.dst as usize] = lv[v as usize] + 1;
+                    }
+                }
+            }
+
+            lv[t as usize] != 0
+        }
+
+        fn dfs(&mut self, v: u32, t: u32, fl: u64, lv: &[u32], idx: &mut [u32]) -> u64 {
+            if v == t || fl == 0 {
+                return fl;
+            }
+
+            for i in idx[v as usize]..self.g[v as usize].len() as u32 {
+                idx[v as usize] = i;
+
+                let Edge { dst, opp, cap } = self.g[v as usize][i as usize];
+                if lv[dst as usize] != lv[v as usize] + 1 || cap == 0 {
+                    continue;
+                }
+                let now = self.dfs(dst, t, fl.min(cap), lv, idx);
+                if now == 0 {
+                    continue;
+                }
+
+                self.g[v as usize][i as usize].cap -= now;
+                self.g[dst as usize][opp as usize].cap += now;
+                return now;
+            }
+
+            0
+        }
+
+        pub fn max_flow(&mut self, src: usize, dst: usize) -> u64 {
+            let mut flow = 0;
+            let mut aug;
+            let mut lv = vec![0; self.n];
+            let mut idx = vec![0; self.n];
+
+            while self.bfs(src as u32, dst as u32, &mut lv) {
+                idx.fill(0);
+                loop {
+                    aug = self.dfs(src as u32, dst as u32, u64::MAX, &mut lv, &mut idx);
+                    if aug == 0 {
+                        break;
+                    }
+                    flow += aug;
+                }
+            }
+            flow
+        }
+    }
+}
+

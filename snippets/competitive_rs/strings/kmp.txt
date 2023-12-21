@@ -1,0 +1,47 @@
+/// Returns a failure function of `pattern`.
+fn failure_function<T: PartialEq>(pattern: &[T]) -> Vec<usize> {
+    let n = pattern.len();
+    let mut c = vec![0, 0];
+    let mut x;
+    for i in 1..n {
+        x = c[i];
+        loop {
+            if pattern[i] == pattern[x] {
+                c.push(x + 1);
+                break;
+            }
+            if x == 0 {
+                c.push(0);
+                break;
+            }
+            x = c[x];
+        }
+    }
+    c
+}
+
+/// Returns a result of KMP search.
+/// For `n = pattern.len()`, if `result[i] == n`, then `haystack[i-n..i] == pattern`.
+fn kmp_search<T: PartialEq>(haystack: &[T], pattern: &[T], failure: &[usize]) -> Vec<usize> {
+    let m = haystack.len();
+    let mut d = vec![0];
+    let mut x;
+    for i in 0..m {
+        x = d[i];
+        if x == pattern.len() {
+            x = failure[x];
+        }
+        loop {
+            if haystack[i] == pattern[x] {
+                d.push(x + 1);
+                break;
+            }
+            if x == 0 {
+                d.push(0);
+                break;
+            }
+            x = failure[x];
+        }
+    }
+    d
+}
