@@ -1,7 +1,9 @@
 -- set vim options here (vim.<first_key>.<second_key> = value)
--- local alpha = function()
---   return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
--- end
+local neovide_transparency = 0.9
+local neovide_transparency_point = 0.8
+local alpha = function() return string.format("%x", math.floor((255 * neovide_transparency_point) or 0.8)) end
+local neovide_background_color = "#1E1E2D" .. alpha()
+
 return {
   opt = {
     -- set to true or false etc.
@@ -32,6 +34,7 @@ return {
     ui_notifications_enabled = true, -- disable notifications when toggling UI elements
     resession_enabled = false, -- enable experimental resession.nvim session management (will be default in AstroNvim v4)
     -- neovide
+
     neovide_input_macos_alt_is_meta = true,
     neovide_cursor_vfx_mode = "pixiedust",
     neovide_refresh_rate = 120,
@@ -41,9 +44,12 @@ return {
     neovide_light_angle_degrees = 45,
     neovide_light_radius = 5,
 
-    -- neovide_transparency = 0.0,
-    -- transparency = 0.8,
-    -- neovide_background_color = "#0f1117" .. alpha()
+    neovide_transparency = neovide_transparency,
+    neovide_transparency_point = neovide_transparency_point,
+    neovide_background_color = neovide_background_color,
+
+    winblend = 50,
+    pumblend = 50,
 
     -- encoding = "UTF-8",
   },
@@ -54,7 +60,7 @@ return {
     -- expandtab = true,
   },
   o = {
-    guifont = "Recursive:h17",
+    guifont = "Recursive:h16",
   },
 }
 

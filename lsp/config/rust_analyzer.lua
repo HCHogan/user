@@ -12,9 +12,9 @@ return {
         allFeatures = true,
       },
       inlayHints = {
-        -- reborrowHints = {
-        --   enable = "always",
-        -- },
+        reborrowHints = {
+          enable = "always",
+        },
         lifetimeElisionHints = {
           enable = "always",
         },

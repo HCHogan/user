@@ -148,10 +148,7 @@ return {
             enabled = true,
             colored_indent_levels = true,
           },
-          dap = {
-            enabled = true,
-            enable_ui = true,
-          },
+          dap = true,
           barbar = true,
           aerial = true,
           headlines = true,
@@ -210,9 +207,9 @@ return {
           auto_trigger = true,
           debounce = 75,
           keymap = {
-            accept = "<M-l>",
+            accept = "<M-;>",
             accept_word = false,
-            accept_line = false,
+            accept_line = "<M-'>",
             next = "<M-]>",
             prev = "<M-[>",
             dismiss = "<C-]>",
