@@ -1,5 +1,5 @@
 -- set vim options here (vim.<first_key>.<second_key> = value)
-local neovide_transparency = 0.9
+local neovide_transparency = 0.8
 local neovide_transparency_point = 0.8
 local alpha = function() return string.format("%x", math.floor((255 * neovide_transparency_point) or 0.8)) end
 local neovide_background_color = "#1E1E2D" .. alpha()
@@ -50,6 +50,9 @@ return {
 
     winblend = 50,
     pumblend = 50,
+
+    neovide_floating_blur_amount_x = 2.0,
+    neovide_floating_blur_amount_y = 2.0,
 
     -- encoding = "UTF-8",
   },

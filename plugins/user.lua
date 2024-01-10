@@ -35,38 +35,38 @@ return {
     "L3MON4D3/LuaSnip",
     event = "BufRead",
     config = function()
-      local ls = require "luasnip"
-      local s = ls.snippet
-      local t = ls.text_node
-      local i = ls.insert_node
+      -- local ls = require "luasnip"
+      -- local s = ls.snippet
+      -- local t = ls.text_node
+      -- local i = ls.insert_node
       -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/user/snippets" } })
 
-      ls.add_snippets("cpp", {
-        s("acm", {
-          t {
-            "// Created by Hank Hogan",
-            "",
-            "#include <iostream>",
-            "#include <vector>",
-            "",
-            "using namespace std;",
-            "",
-            "int main(int argc, char *argv[]) {",
-            "  ios::sync_with_stdio(false);",
-            "  cin.tie(nullptr);",
-            "  cout.tie(nullptr);",
-            "",
-            "  ",
-          },
-          i(1),
-          t {
-            "",
-            "",
-            "  return 0;",
-            "}",
-          },
-        }),
-      })
+    --   ls.add_snippets("cpp", {
+    --     s("acm", {
+    --       t {
+    --         "// Created by Hank Hogan",
+    --         "",
+    --         "#include <iostream>",
+    --         "#include <vector>",
+    --         "",
+    --         "using namespace std;",
+    --         "",
+    --         "int main(int argc, char *argv[]) {",
+    --         "  ios::sync_with_stdio(false);",
+    --         "  cin.tie(nullptr);",
+    --         "  cout.tie(nullptr);",
+    --         "",
+    --         "  ",
+    --       },
+    --       i(1),
+    --       t {
+    --         "",
+    --         "",
+    --         "  return 0;",
+    --         "}",
+    --       },
+    --     }),
+    --   })
     end,
   },
   {
@@ -110,8 +110,8 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
-      local colors = require("catppuccin.palettes").get_palette "mocha"
-      colors.none = "NONE"
+      -- local colors = require("catppuccin.palettes").get_palette "mocha"
+      -- colors.none = "NONE"
       require("catppuccin").setup {
         transparent_background = false,
         styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
