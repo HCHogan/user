@@ -11,6 +11,7 @@ return {
         extraArgs = { "--no-deps" },
         allFeatures = true,
       },
+      -- checkOnSave = false,
       inlayHints = {
         reborrowHints = {
           enable = "always",

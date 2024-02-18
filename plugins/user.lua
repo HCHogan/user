@@ -1,4 +1,5 @@
 local leet_arg = "lc"
+local utils = require "astronvim.utils"
 
 return {
   {
@@ -41,45 +42,46 @@ return {
       -- local i = ls.insert_node
       -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/user/snippets" } })
 
-    --   ls.add_snippets("cpp", {
-    --     s("acm", {
-    --       t {
-    --         "// Created by Hank Hogan",
-    --         "",
-    --         "#include <iostream>",
-    --         "#include <vector>",
-    --         "",
-    --         "using namespace std;",
-    --         "",
-    --         "int main(int argc, char *argv[]) {",
-    --         "  ios::sync_with_stdio(false);",
-    --         "  cin.tie(nullptr);",
-    --         "  cout.tie(nullptr);",
-    --         "",
-    --         "  ",
-    --       },
-    --       i(1),
-    --       t {
-    --         "",
-    --         "",
-    --         "  return 0;",
-    --         "}",
-    --       },
-    --     }),
-    --   })
+      --   ls.add_snippets("cpp", {
+      --     s("acm", {
+      --       t {
+      --         "// Created by Hank Hogan",
+      --         "",
+      --         "#include <iostream>",
+      --         "#include <vector>",
+      --         "",
+      --         "using namespace std;",
+      --         "",
+      --         "int main(int argc, char *argv[]) {",
+      --         "  ios::sync_with_stdio(false);",
+      --         "  cin.tie(nullptr);",
+      --         "  cout.tie(nullptr);",
+      --         "",
+      --         "  ",
+      --       },
+      --       i(1),
+      --       t {
+      --         "",
+      --         "",
+      --         "  return 0;",
+      --         "}",
+      --       },
+      --     }),
+      --   })
     end,
   },
   {
     "rcarriga/nvim-notify",
+    enabled = false,
     event = "VeryLazy",
     config = function()
-      require("notify").setup {
-        timeout = 100,
-        fps = 120,
-        level = "info",
-        max_width = 40,
-        render = "wrapped-compact",
-      }
+      -- require("notify").setup {
+      --   timeout = 100,
+      --   fps = 120,
+      --   level = "info",
+      --   max_width = 40,
+      --   render = "wrapped-compact",
+      -- }
     end,
   },
   {
@@ -282,14 +284,14 @@ return {
     build = ":TSUpdate html",
     lazy = leet_arg ~= vim.fn.argv()[1],
     dependencies = {
-        "nvim-telescope/telescope.nvim",
-        "nvim-lua/plenary.nvim", -- required by telescope
-        "MunifTanjim/nui.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim", -- required by telescope
+      "MunifTanjim/nui.nvim",
 
-        -- optional
-        "nvim-treesitter/nvim-treesitter",
-        "rcarriga/nvim-notify",
-        "nvim-tree/nvim-web-devicons",
+      -- optional
+      "nvim-treesitter/nvim-treesitter",
+      "rcarriga/nvim-notify",
+      "nvim-tree/nvim-web-devicons",
     },
     opts = {
       arg = "lc",
@@ -302,6 +304,13 @@ return {
       },
     },
   },
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^4", -- Recommended
+  --   ft = { "rust" },
+  --   init = function() astronvim.lsp.skip_setup = utils.list_insert_unique(astronvim.lsp.skip_setup, "rust_analyzer") end,
+    -- opts =
+  -- },
   -- {
   --   "nvimdev/dyninput.nvim",
   --   config = function()

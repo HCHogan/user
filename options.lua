@@ -1,6 +1,6 @@
 -- set vim options here (vim.<first_key>.<second_key> = value)
-local neovide_transparency = 0.8
-local neovide_transparency_point = 0.8
+local neovide_transparency = 0.75
+local neovide_transparency_point = 0.75
 local alpha = function() return string.format("%x", math.floor((255 * neovide_transparency_point) or 0.8)) end
 local neovide_background_color = "#1E1E2D" .. alpha()
 
@@ -15,14 +15,14 @@ return {
     termguicolors = true,
     scrolloff = 5,
     sidescrolloff = 5,
-    list = true,
-    listchars = {
-      tab = "» ",
-      trail = "·",
-      extends = "…",
-      precedes = "…",
-      nbsp = "␣",
-    },
+    -- list = true,
+    -- listchars = {
+    --   tab = "» ",
+    --   trail = "·",
+    --   extends = "…",
+    --   precedes = "…",
+    --   nbsp = "␣",
+    -- },
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
@@ -47,6 +47,7 @@ return {
     neovide_transparency = neovide_transparency,
     neovide_transparency_point = neovide_transparency_point,
     neovide_background_color = neovide_background_color,
+    neovide_window_blurred = true,
 
     winblend = 50,
     pumblend = 50,
